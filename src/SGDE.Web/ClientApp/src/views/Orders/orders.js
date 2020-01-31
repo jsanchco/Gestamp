@@ -43,7 +43,7 @@ class Orders extends Component {
       allowDeleting: true,
       newRowPosition: "Top"
     };
-    this.pageSettings = { pageCount: 10, pageSize: 100 };
+    this.pageSettings = { pageCount: 10, pageSize: 10 };
     this.actionFailure = this.actionFailure.bind(this);
     this.actionComplete = this.actionComplete.bind(this);
   }

@@ -14,9 +14,9 @@
 
     public partial class Supervisor
     {
-        public List<OrderViewModel> GetAllOrders()
+        public List<OrderViewModel> GetAllOrders(int skip = 0, int take = 0)
         {
-            return OrderConverter.ConvertList(_orderRepository.GetAll());
+            return OrderConverter.ConvertList(_orderRepository.GetAll(skip, take));
         }
 
         public OrderViewModel GetOrderById(string id)
@@ -86,6 +86,11 @@
         public bool DeleteOrder(string id)
         {
             return _orderRepository.Delete(id);
+        }
+
+        public long OrdersTotalRegs()
+        {
+            return _orderRepository.TotalRegs();
         }
     }
 }

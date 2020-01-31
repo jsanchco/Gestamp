@@ -21,11 +21,6 @@
             _context = new EFContextMongoDB(infrastructure);
         }
 
-        //public OrderRepository(EFContextMongoDB context)
-        //{
-        //    _context = context;
-        //}
-
         public Order Add(Order newOrder)
         {
             newOrder.Id = Guid.NewGuid().ToString(); 
@@ -40,8 +35,11 @@
             return resultRemove.DeletedCount > 0;
         }
 
-        public List<Order> GetAll()
+        public List<Order> GetAll(int skip = 0, int take = 0)
         {
+            if (skip != 0 || take != 0)
+                return _context.Orders.Find(order => true).Skip(skip).Limit(take).ToList();
+
             return _context.Orders.Find(order => true).ToList();
         }
 
@@ -57,6 +55,11 @@
                 return null;
 
             return orders.FirstOrDefault();
+        }
+
+        public long TotalRegs()
+        {
+            return _context.Orders.Find(order => true).CountDocuments();
         }
 
         public bool Update(Order order)

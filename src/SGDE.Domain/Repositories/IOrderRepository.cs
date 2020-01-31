@@ -12,11 +12,12 @@
 
     public interface IOrderRepository
     {
-        List<Order> GetAll();
+        List<Order> GetAll(int skip = 0, int take = 0);
         Order GetById(string id);
         Order GetByOrderId(int orderId);
         Order Add(Order newOrder);
         bool Update(Order order);
         bool Delete(string id);
+        long TotalRegs();
     }
 }

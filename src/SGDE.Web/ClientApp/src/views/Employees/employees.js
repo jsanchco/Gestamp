@@ -8,16 +8,16 @@ import {
   Inject,
   Toolbar,
   Page,
-  ForeignKey,
   Group
 } from "@syncfusion/ej2-react-grids";
 import { DataManager, WebApiAdaptor } from "@syncfusion/ej2-data";
-import { config, USERS, PROFESSIONS } from "../../constants";
+import { config, USERS } from "../../constants";
 import { L10n } from "@syncfusion/ej2-base";
 import data from "../../locales/locale.json";
 import { connect } from "react-redux";
 import ACTION_APPLICATION from "../../actions/applicationAction";
 import { TOKEN_KEY } from "../../services";
+import { getUsers } from "../../services";
 
 L10n.load(data);
 
@@ -25,23 +25,14 @@ class Employees extends Component {
   users = new DataManager({
     adaptor: new WebApiAdaptor(),
     url: `${config.URL_API}/${USERS}`,
-    headers: [{ Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY) }]
+    // headers: [{ Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY) }]
   });
-
-  professions = new DataManager({
-    adaptor: new WebApiAdaptor(),
-    url: `${config.URL_API}/${PROFESSIONS}`,
-    headers: [{ Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY) }]
-  });
-
-  proffesionIdRules = { required: true };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      users: null,
-      professions: null
+      users: null
     };
 
     this.toolbarOptions = ["Add", "Edit", "Delete", "Update", "Cancel", "Search"];
@@ -81,6 +72,10 @@ class Employees extends Component {
         type: "success"
       });
     }
+  }
+
+  componentDidMount() {
+    getUsers();
   }
 
   render() {
@@ -129,23 +124,13 @@ class Employees extends Component {
                     width="100"
                   />
                   <ColumnDirective
-                    field="professionId"
-                    headerText="Profesión"
-                    width="100"
-                    editType="dropdownedit"
-                    foreignKeyValue="name"
-                    foreignKeyField="id"
-                    validationRules={this.proffesionIdRules}
-                    dataSource={this.professions}
-                  />
-                  <ColumnDirective
                     field="age"
                     headerText="Edad"
                     width="100"
                     textAlign="Right"
                   />
                 </ColumnsDirective>
-                <Inject services={[ForeignKey, Group, Page, Toolbar, Edit]} />
+                <Inject services={[Group, Page, Toolbar, Edit]} />
               </GridComponent>
             </Row>
           </div>

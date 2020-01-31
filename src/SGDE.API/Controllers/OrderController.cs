@@ -45,8 +45,14 @@
         {
             try
             {
-                var data = _supervisor.GetAllOrders().ToList();
-                return new { Items = data, data.Count };
+                var queryString = Request.Query;
+                var skip = Convert.ToInt32(queryString["$skip"]);
+                var take = Convert.ToInt32(queryString["$top"]);
+
+                var data = _supervisor.GetAllOrders(skip, take).ToList();
+                var numReg = data.Count();
+
+                return new { Items = data, Count = _supervisor.OrdersTotalRegs() };
             }
             catch (Exception ex)
             {

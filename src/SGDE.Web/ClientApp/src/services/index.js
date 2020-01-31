@@ -58,6 +58,21 @@ export const isLogin = () => {
   return false;
 };
 
+export const getOrders = () => {
+  const url = `${config.URL_API1}/${USERS}`;
+  fetch(url, {
+    method: "GET"
+  })
+    .then(data => data.json())
+    .then(result => {
+      console.log("result ->", result);
+      return result;
+    })
+    .catch(error => {
+      console.log("error ->", error);
+    });
+};
+
 export const getUsers = () => {
   const url = `${config.URL_API}/${USERS}`;
   fetch(url, {

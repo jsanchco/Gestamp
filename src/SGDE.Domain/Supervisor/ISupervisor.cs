@@ -13,11 +13,12 @@
     {
         #region Order
 
-        List<OrderViewModel> GetAllOrders();
+        List<OrderViewModel> GetAllOrders(int skip = 0, int take = 0);
         OrderViewModel GetOrderById(string id);
         OrderViewModel AddOrder(OrderViewModel newOrderViewModel);
         bool UpdateOrder(OrderViewModel orderViewModel);
         bool DeleteOrder(string id);
+        long OrdersTotalRegs();
 
         #endregion
     }

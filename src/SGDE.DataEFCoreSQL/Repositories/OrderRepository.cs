@@ -29,10 +29,16 @@
             return GetById(id) != null;
         }
 
-        public List<Order> GetAll()
+        public List<Order> GetAll(int skip = 0, int take = 0)
         {
-            return _context.Order
+            if (skip != 0 || take != 0)
+                return _context.Order
+                .Skip(skip)
+                .Take(take)
                 .ToList();
+
+            return _context.Order
+              .ToList();
         }
 
         public Order GetById(string id)
@@ -74,6 +80,11 @@
             _context.SaveChanges();
             return true;
 
+        }
+
+        public long TotalRegs()
+        {
+            return _context.Order.Count();
         }
     }
 }

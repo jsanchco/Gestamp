@@ -33,7 +33,7 @@
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddMvc().AddNewtonsoftJson(options => 
-                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             //services.AddMvc().AddJsonOptions(options =>
             //{
             //    options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
