@@ -39,6 +39,7 @@ const User = React.lazy(() => import('./views/Users/User'));
 const WorkOrders = React.lazy(() => import('./views/Employees/Employee/WorkOrders'));
 const SharedScheduler = React.lazy(() => import('./views/Employees/Employee/SharedScheduler'));
 const Employees = React.lazy(() => import('./views/Employees/employees'));
+const Orders = React.lazy(() => import('./views/Orders/orders'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -85,7 +86,8 @@ const routes = [
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   { path: '/employees/employee/workorders', exact: true, name: 'Partes de Trabajo', component: WorkOrders },
   { path: '/employees/employee/sharedscheduler', exact: true, name: 'Compartir Agenda', component: SharedScheduler },
-  { path: '/employees/employees', exact: true, name: 'Trabajadores', component: Employees }
+  { path: '/employees/employees', exact: true, name: 'Trabajadores', component: Employees },
+  { path: '/orders/orders', exact: true, name: 'Orders', component: Orders }
 ];
 
 export default routes;

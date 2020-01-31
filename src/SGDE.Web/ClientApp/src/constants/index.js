@@ -1,6 +1,7 @@
 export const PROFESSIONS = "api/Professions";
 export const USERS = "api/Users";
-export const AUTHENTICATE = "api/Users/authenticate";
+export const AUTHENTICATE = "api/Authenticate/login";
+export const ORDERS = "api/Order";
 
 const dev = {
   URL_API: "http://localhost:51567"

@@ -17,10 +17,10 @@ export const login = (username, password, history) => {
   })
     .then(data => data.json())
     .then(result => {
-      if (result.user != null && result.token != null) {
-        localStorage.setItem('user', JSON.stringify(result.user));
+      if (result.username != null && result.token != null) {
+        localStorage.setItem('user', JSON.stringify(result.username));
         localStorage.setItem(TOKEN_KEY, result.token);
-        store.dispatch(ACTION_AUTHENTICATION.logIn(result.user, result.token));
+        store.dispatch(ACTION_AUTHENTICATION.logIn(result.username, result.token));
         history.push("/dashboard");
       } else {
         if (result.message) {

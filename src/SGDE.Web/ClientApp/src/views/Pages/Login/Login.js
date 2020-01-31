@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -124,6 +123,21 @@ class Login extends Component {
                             onChange={this.handlePasswordChange}
                           />
                         </InputGroup>
+                        <Row>
+                          <Col xs="6">
+                            Usuario: test
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col xs="6">
+                            Contraseña: test
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col xs="6">
+                            &nbsp;
+                          </Col>
+                        </Row>
                         <Row>
                           <Col xs="6">
                             <Button

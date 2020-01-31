@@ -1,13 +1,18 @@
 export default {
   items: [
     {
-      name: 'Dashboard',
+      name: 'Gestamp',
       url: '/dashboard',
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',
-        text: 'NEW',
+        text: 'TEST',
       },
+    },
+    {
+      name: 'Orders',
+      url: '/Orders/orders',
+      icon: 'icon-people'
     },
     {
       name: 'Trabajadores',
