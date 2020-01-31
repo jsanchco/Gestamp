@@ -114,7 +114,8 @@
       "GroupDropArea": "Arrastra hasta aquí una columna para poder agrupar por ella",
       "Item": "Elemento",
       "Items": "Elementos",
-      "UnGroup": "Quitar agrupación"
+      "UnGroup": "Quitar agrupación",
+      "ConfirmDelete": "¿Estás seguro de querer borrar este registro?"
     },
     "pager": {
       "currentPageInfo": "{0} de {1} Página/s",

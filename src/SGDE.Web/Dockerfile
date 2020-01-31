@@ -14,11 +14,11 @@ RUN npm run build
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 ENV BuildingDocker true
 WORKDIR /src
-COPY Arconsa.sln .
+COPY Gestamp.sln .
 COPY docker-compose.dcproj /src/
 COPY src/SGDE.API/SGDE.API.csproj src/SGDE.API/
 COPY src/SGDE.Domain/SGDE.Domain.csproj src/SGDE.Domain/
-COPY src/SGDE.DataEFCoreMySQL/SGDE.DataEFCoreMySQL.csproj src/SGDE.DataEFCoreMySQL/
+COPY src/SGDE.DataEFCoreMongoDB/SGDE.DataEFCoreMySQL.csproj src/SGDE.DataEFCoreMongoDB/
 COPY src/SGDE.DataEFCoreSQL/SGDE.DataEFCoreSQL.csproj src/SGDE.DataEFCoreSQL/
 COPY src/SGDE.SeedData/SGDE.SeedData.csproj src/SGDE.SeedData/
 COPY src/SGDE.Web/SGDE.Web.csproj src/SGDE.Web/

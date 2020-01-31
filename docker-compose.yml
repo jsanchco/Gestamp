@@ -1,41 +1,16 @@
 version: '3.4'
 
 services:
-  db:
-    image: mysql:latest
-    container_name: mysql-db
-    environment:
-      MYSQL_DATABASE: Arconsa
-      MYSQL_ROOT_PASSWORD: Aceitun@1
-    restart: always
-    ports:
-    # <Port exposed> : < MySQL Port running inside container>
-      - '3306:3306'
-    expose:
-    # Opens port 3306 on the container
-      - '3306'
-    # Where our data will be persisted
-    volumes:
-      - my-db:/var/lib/mysql
-
   sgdeapi:
     image: ${DOCKER_REGISTRY-}sgdeapi
     build:
       context: .
       dockerfile: src/SGDE.API/Dockerfile
-    depends_on:
-      - db    
-    environment:
-      ConnectionStrings__SGDEContextMySQL: Server=db;Port=3306;Database=Arconsa;User=root;Password=Aceitun@1;
 
   sgdeweb:
     image: ${DOCKER_REGISTRY-}sgdeweb
     build:
       context: .
       dockerfile: src/SGDE.Web/Dockerfile
-    depends_on:
-      - db   
+    depends_on: 
       - sgdeapi
- 
-volumes:
-  my-db:
